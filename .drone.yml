@@ -3,6 +3,6 @@ pipeline:
     image: mhsallam/bxcli
     secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
     commands:
-      - echo  ${BLUEMIX_USER}
-      - bx login -u ${BLUEMIX_USER} -p ${BLUEMIX_PASSWORD} -c ${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o ${BLUEMIX_ORG} -s dev
+      - echo  $${BLUEMIX_USER}
+      - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
       - bx wsk action create reports /services/reports/action.js
