@@ -1,5 +1,5 @@
 function main () {
   return {
-    result: "Hello RH!"
+    result: "Hello Report Hub!"
   };
 }
