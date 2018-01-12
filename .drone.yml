@@ -1,0 +1,5 @@
+pipeline:
+  build:
+    image: mhsallam/bxcli
+    commands:
+      - bx wsk action create reports /services/reports/action.js  
