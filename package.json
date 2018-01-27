@@ -1,5 +1,5 @@
 {
-  "name": "report-hub",
+  "name": "reporthub",
   "version": "1.0.0",
   "description": "Please don't mind the title, it's just a repo for testing and playing with CI/CD.",
   "main": "index.js",
