@@ -1,0 +1,18 @@
+type Query {
+  getReports: [Report]
+  report(id: ID!): Report
+  reportById(id: ID!): Report
+}
+
+type Mutation {
+  createReport(id: Int, name: String): Report
+}
+
+type Subscription {
+  reportCreated: Report
+}
+
+type Report {
+    id: Int,
+    name: String
+}
