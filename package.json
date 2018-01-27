@@ -1,0 +1,44 @@
+{
+  "name": "report-hub",
+  "version": "1.0.0",
+  "description": "Please don't mind the title, it's just a repo for testing and playing with CI/CD.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "run-p install:api install:web install:desktop",
+    "install:api": "cd api && npm install",
+    "install:web": "cd web && npm install",
+    "install:desktop": "cd desktop && npm install",
+
+    "start": "run-p start:api start:web",
+    "start:api": "npm run start --prefix api",
+    "start:web": "npm run start --prefix web",
+    "start:desktop": "npm run electron --prefix desktop",
+    
+    "test": "run-p test:api test:web test:desktop",
+    "test:api": "cd api && npm run test",
+    "test:web": "cd web && npm run test",
+    "test:desktop": "cd desktop && npm run test",
+    
+    "build": "run-p build:api build:web build:desktop",
+    "build:api": "cd api && npm run prestart:prod && cd ..",
+    "build:web": "cd web && npm run build && cd ..",
+    "build:desktop": "cd desktop && npm run build && cd ..",
+    
+    "prod": "run-p build:api prod:web prod:desktop",
+    "prod:web": "cd web && npm run build-prod && cd ..",
+    "prod:desktop": "cd desktop && npm run build-prod && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immap-dev/rh.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/immap-dev/rh/issues"
+  },
+  "homepage": "https://github.com/immap-dev/rh#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
+  }
+}

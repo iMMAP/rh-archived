@@ -1,0 +1,15 @@
+version: '2'
+services:
+  backend:
+    build: 
+      context: ..
+      dockerfile: docker/backend.dockerfile
+    ports:
+     - "8080:88"
+  web:
+    build: 
+      context: ..
+      dockerfile: docker/web.dockerfile
+    ports:
+     - "8000:80"
+#docker-compose -p docker up --build

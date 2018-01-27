@@ -1,0 +1,154 @@
+.fuse-card {
+    max-width: 320px;
+    min-width: 320px;
+    background: white;
+    border-radius: 2px;
+    @include mat-elevation(2);
+
+    &.variable-width {
+        min-width: 0;
+    }
+
+    .card-rich-media {
+        position: relative;
+
+        .card-title {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            left: 16px;
+            font-size: 20px;
+            color: white;
+        }
+    }
+
+    .card-media-header {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+
+        &.medium {
+            align-items: flex-start;
+
+            .card-rich-media {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        &.large {
+            align-items: flex-start;
+
+            .card-rich-media {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        .card-primary-title {
+            padding: 0 16px 0 0;
+            flex: 1;
+        }
+
+        .card-rich-media {
+            width: 80px;
+            height: 80px;
+        }
+
+        + div {
+            padding-top: 0;
+        }
+    }
+
+    .card-avatar-header {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+
+        .card-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            margin-right: 16px;
+        }
+
+        .card-avatar-title {
+
+            .card-title {
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .card-subtitle {
+                font-size: 13px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .card-primary-title {
+        padding: 16px;
+
+        .card-title {
+            font-size: 24px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+        }
+
+        + div {
+            padding-top: 0;
+        }
+    }
+
+    .card-supporting-text {
+        padding: 16px;
+        font-size: 14px;
+        line-height: 1.75;
+
+        + div {
+            padding-top: 0;
+        }
+    }
+
+    .card-actions {
+        display: flex;
+        padding: 8px;
+
+        &.icon-buttons {
+            padding: 0 8px;
+        }
+
+        &.align-center {
+            justify-content: center;
+        }
+
+        &.align-right {
+            justify-content: flex-end;
+        }
+
+        .mat-button {
+            min-width: 0 !important;
+            padding: 0 8px !important;
+        }
+
+        .card-expander {
+            margin-left: auto;
+        }
+
+        + div {
+            padding-top: 0;
+        }
+    }
+
+    .card-expand-area {
+        overflow: hidden;
+
+        .card-expanded-supporting-text {
+            padding: 8px 16px 16px 16px;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+    }
+}

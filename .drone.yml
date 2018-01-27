@@ -1,8 +1,24 @@
 pipeline:
-  build:
+  services:
     image: mhsallam/bxcli
     secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
     commands:
       - echo  $${BLUEMIX_USER}
       - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
-      - bx wsk action create reports ./services/reports/action.js
+      - bx target -g reporthub
+      - bx wsk action update reports ./services/reports/reports.js
+
+  build:
+    image: node6-alpine
+    commands:
+    # ineasted of (npm run postinstall) which will be time consuming with drone server
+    # we can build a docker image that copies all node_modules with CMD layer that will
+    # only be rebuild if the package.json is different thatn the one in the docker image
+      - npm run postinstall
+      - npm run test
+      - npm run build
+
+  # start dockerizing and deploying
+  # depoly:
+  #   image: node6-alpine
+  #   commands:
