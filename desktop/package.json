@@ -60,7 +60,7 @@
     "@types/jasminewd2": "2.0.3",
     "@types/node": "6.0.92",
     "codelyzer": "4.0.2",
-    "electron": "1.7.9",
+    "electron": "1.7.11",
     "jasmine-core": "2.6.4",
     "jasmine-spec-reporter": "4.1.1",
     "karma": "1.7.1",
