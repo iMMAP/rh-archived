@@ -8,17 +8,20 @@ pipeline:
       - bx target -g reporthub
       - bx wsk action update reports ./services/reports/reports.js
 
-  build:
-    image: node6-alpine
-    commands:
-    # ineasted of (npm run postinstall) which will be time consuming with drone server
-    # we can build a docker image that copies all node_modules with CMD layer that will
-    # only be rebuild if the package.json is different thatn the one in the docker image
-      - npm run postinstall
-      - npm run test
-      - npm run build
+  # build:
+  #   image: node6-alpine
+  #   commands:
+  #   # ineasted of (npm run postinstall) which will be time consuming with drone server
+  #   # we can build a docker image that copies all node_modules with CMD layer that will
+  #   # only be rebuild if the package.json is different thatn the one in the docker image
+  #     - npm run postinstall
+  #     - npm run test
+  #     - npm run build
 
   # start dockerizing and deploying
   # depoly:
   #   image: node6-alpine
   #   commands:
+  gitter:
+    image: plugins/gitter
+    webhook: https://webhooks.gitter.im/e/d93462d24fbcff832c6d
