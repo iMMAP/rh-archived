@@ -1,8 +1,4 @@
 pipeline:
-  gitter:
-    image: plugins/gitter
-    webhook: https://webhooks.gitter.im/e/d93462d24fbcff832c6d
-  
   services:
     image: mhsallam/bxcli
     secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
@@ -26,3 +22,7 @@ pipeline:
   # depoly:
   #   image: node6-alpine
   #   commands:
+
+  gitter:
+    image: plugins/gitter
+    webhook: https://webhooks.gitter.im/e/d93462d24fbcff832c6d
