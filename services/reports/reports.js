@@ -36,3 +36,4 @@ function main(params) {
 
 // module.exports.report = report;
 // module.exports.reports = reports;
+module.exports.report = main;
