@@ -5,7 +5,7 @@ pipeline:
     commands:
       - echo  $${BLUEMIX_USER}
       - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
-      - bx target -g reporthub
+      - bx target -g Default
       - bx wsk action update reports ./services/reports/reports.js
 
   # build:
