@@ -3,7 +3,7 @@
 
 ### The One Information Products Hub You Would Ever Need
 
-ReportHub+ is a centralized solution for hosting and publishing humanitarian data, reports and interactive dashboards. You can build your customized reports and dashboard from verity of customizable widgets and components. The data itself can be from verity of sources, you can host the data in ReportHub+ secured servers or connect the data from remote servers.
+ReportHub+ is a centralized solution for hosting and publishing humanitarian data, reports and interactive dashboards. You can build your customized reports and dashboard from veriety of customizable widgets and components. The data itself can be from veriety of sources, you can host the data in ReportHub+ secured servers or connect the data from remote servers.
 
 You can easily configure your information products and data to be public or private. Choose what to publish and who, how and when to access. With ReportHub+ you manage your subscribers and keep them engaged with automatic notifications and reminders.
 
