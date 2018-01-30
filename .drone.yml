@@ -1,5 +1,5 @@
 pipeline:
-  services:
+  faas:
     image: mhsallam/bxcli
     secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
     commands:
@@ -7,6 +7,27 @@ pipeline:
       - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
       - bx target -g Default
       - bx wsk action update reports ./services/reports/reports.js
+
+  api:
+    image: node:alpine
+    commands:
+      - npm run install:api
+      - npm run build:api
+      # - npm run test:api
+      - npm run docker:api
+
+  # api-image:
+  #   image: plugins/docker
+  #     context: api
+  #     repo: mhsallam/reporthubapi
+  #     insecure: true
+
+
+
+  # deploy-api:
+  #   image: node:alpine
+  #   commands:
+  #     - npm run prestart:prod
 
   # build:
   #   image: node6-alpine

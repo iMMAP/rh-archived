@@ -23,6 +23,8 @@
     "build:api": "cd api && npm run prestart:prod && cd ..",
     "build:web": "cd web && npm run build && cd ..",
     "build:desktop": "cd desktop && npm run build && cd ..",
+
+    "docker:api": "docker build -t mhsallam/reporthubapi . && docker run -p 3000:3000 -d mhsallam/reporthubapi",
     
     "prod": "run-p build:api prod:web prod:desktop",
     "prod:web": "cd web && npm run build-prod && cd ..",

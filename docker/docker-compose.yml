@@ -1,15 +1,15 @@
 version: '2'
 services:
-  backend:
+  api:
     build: 
       context: ..
-      dockerfile: docker/backend.dockerfile
+      dockerfile: docker/api.dockerfile
     ports:
-     - "8080:88"
-  web:
-    build: 
-      context: ..
-      dockerfile: docker/web.dockerfile
-    ports:
-     - "8000:80"
-#docker-compose -p docker up --build
+     - "3000:88"
+  # web:
+  #   build: 
+  #     context: ..
+  #     dockerfile: docker/web.dockerfile
+  #   ports:
+  #    - "4200:80"
+#docker-compose -p reporhub up --build
