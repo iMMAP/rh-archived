@@ -15,9 +15,9 @@ pipeline:
       - npm run build:api
       # - npm run test:api
 
-  deploy-api:
+  docker:
     image: plugins/docker
-      context: api
+      dockerfile: api/Dockerfile
       repo: mhsallam/reporthubapi
       insecure: true
 
