@@ -17,10 +17,9 @@ pipeline:
 
   docker-api:
     image: plugins/docker
-    username: ubuntu
     dockerfile: api/Dockerfile
     repo: mhsallam/reporthubapi
-    insecure: true
+    secrets: [ docker_username, docker_password ]
     when:
       branch: master
     # build_args:
