@@ -1,5 +1,5 @@
 pipeline:
-  faas:
+  depoly-faas:
     image: mhsallam/bxcli
     secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
     commands:
@@ -8,13 +8,20 @@ pipeline:
       - bx target -g Default
       - bx wsk action update reports ./services/reports/reports.js
 
-  api:
-    image: node:alpine
+  build-api:
+    image: node:6.12
     commands:
       - npm run install:api
       - npm run build:api
       # - npm run test:api
-      - npm run docker:api
+
+  deploy-api:
+    image: plugins/docker
+      context: api
+      repo: mhsallam/reporthubapi
+      insecure: true
+      build_args:
+        - port: '3000:3000'
 
   # api-image:
   #   image: plugins/docker
