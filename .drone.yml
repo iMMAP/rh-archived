@@ -17,9 +17,11 @@ pipeline:
 
   docker:
     image: plugins/docker
-      dockerfile: api/Dockerfile
-      repo: mhsallam/reporthubapi
-      insecure: true
+    dockerfile: api/Dockerfile
+    repo: mhsallam/reporthubapi
+    insecure: true
+    build_args:
+      - port: '3000:3000'
 
   # api-image:
   #   image: plugins/docker
