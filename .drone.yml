@@ -15,13 +15,16 @@ pipeline:
       - npm run build:api
       # - npm run test:api
 
-  docker:
+  docker-api:
     image: plugins/docker
+    username: ubuntu
     dockerfile: api/Dockerfile
     repo: mhsallam/reporthubapi
     insecure: true
-    build_args:
-      - port: '3000:3000'
+    when:
+      branch: master
+    # build_args:
+    #   - port: '3000:3000'
 
   # api-image:
   #   image: plugins/docker
