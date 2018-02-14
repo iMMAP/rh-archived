@@ -13,7 +13,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@agm/core": "1.0.0-beta.2",
     "@angular/animations": "5.1.1",

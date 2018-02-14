@@ -4,23 +4,23 @@ pipeline:
     commands:
       - npm run install:api
       - npm run build:api
-      - npm run install:web
-      - npm run build:web
+      # - npm run install:web
+      # - npm run build:web
       # - npm run install:desktop
       # - npm run build:desktop
       # - npm run test:api
 
-  api-image:
+  image-api:
     image: plugins/docker
     dockerfile: api/Dockerfile
     repo: mhsallam/reporthubapi
     secrets: [ docker_username, docker_password ]
 
-  web-image:
-    image: plugins/docker
-    dockerfile: web/Dockerfile
-    repo: mhsallam/reporthubweb
-    secrets: [ docker_username, docker_password ]
+  # image-web:
+  #   image: plugins/docker 
+  #   dockerfile: web/Dockerfile
+  #   repo: mhsallam/reporthubweb
+  #   secrets: [ docker_username, docker_password ]
       
 #   # api-rancher:
 #   #   image: peloton/drone-rancher
@@ -38,8 +38,8 @@ pipeline:
     secrets: [ ssh_key ]
     script:
       - docker rm $(docker stop $(docker ps -a -q --filter="name=reporthub" --format="{{.ID}}"))
-      - docker run -it -p 81:3000 --name reporthub-api mhsallam/reporthubapi
-      - docker run -it -p 80:3000 --name reporthub-web mhsallam/reporthubweb
+      - docker run -it -p 81:3000 -d --name reporthub-api mhsallam/reporthubapi
+      - docker run -it -p 80:3000 -d --name reporthub-web mhsallam/reporthubweb
 
   depoly-faas:
     image: mhsallam/bxcli
