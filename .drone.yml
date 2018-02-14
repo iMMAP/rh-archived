@@ -49,6 +49,6 @@ pipeline:
       - bx target -g Default
       - bx wsk action update reports ./services/reports/reports.js
 
-#   gitter:
-#     image: plugins/gitter
-#     webhook: https://webhooks.gitter.im/e/d93462d24fbcff832c6d
+  gitter:
+    image: plugins/gitter
+    webhook: https://webhooks.gitter.im/e/d93462d24fbcff832c6d
