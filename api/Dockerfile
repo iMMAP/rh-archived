@@ -1,7 +1,7 @@
-FROM node:6.12
+FROM node:alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY . .
+COPY api .
 COPY package*.json /usr/src/app/
 RUN npm install
 EXPOSE 3000

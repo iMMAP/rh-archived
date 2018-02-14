@@ -1,20 +1,11 @@
 pipeline:
-#   # depoly-faas:
-#   #   image: mhsallam/bxcli
-#   #   secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
-#   #   commands:
-#   #     - echo  $${BLUEMIX_USER}
-#   #     - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
-#   #     - bx target -g Default
-#   #     - bx wsk action update reports ./services/reports/reports.js
-
-  build-api:
+  build:
     image: node:6.12
     commands:
       - npm run install:api
       - npm run build:api
-      # - npm run install:web
-      # - npm run build:web
+      - npm run install:web
+      - npm run build:web
       # - npm run install:desktop
       # - npm run build:desktop
       # - npm run test:api
@@ -25,24 +16,11 @@ pipeline:
     repo: mhsallam/reporthubapi
     secrets: [ docker_username, docker_password ]
 
-#   api-image:
-#     image: plugins/docker
-#     dockerfile: api/Dockerfile
-#     repo: mhsallam/reporthubapi
-#     secrets: [ docker_username, docker_password ]
-
-#   web-image:
-#     image: plugins/docker
-#     dockerfile: docker/web.dockerfile
-#     repo: mhsallam/reporthubweb
-#     secrets: [ docker_username, docker_password ]
-
-# deploy:
-#       image: joshdvir/drone-ecs-deploy
-#       cluster: reporthub-default
-#       service: reporthub-service
-#       image_name: mhsallam/reporthubweb
-#       aws_region: us-east-1
+  web-image:
+    image: plugins/docker
+    dockerfile: web/Dockerfile
+    repo: mhsallam/reporthubweb
+    secrets: [ docker_username, docker_password ]
       
 #   # api-rancher:
 #   #   image: peloton/drone-rancher
@@ -52,34 +30,24 @@ pipeline:
 #   #   service: ReportHub/api
 #   #   docker_image: mhsallam/reporthubapi
 
-#   # deploy-api:
-#   #   image: node:alpine
-#   #   commands:
-#   #     - npm run prestart:prod
-
-#   # build:
-#   #   image: node6-alpine
-#   #   commands:
-#   #   # ineasted of (npm run postinstall) which will be time consuming with drone server
-#   #   # we can build a docker image that copies all node_modules with CMD layer that will
-#   #   # only be rebuild if the package.json is different thatn the one in the docker image
-#   #     - npm run postinstall
-#   #     - npm run test
-#   #     - npm run build
-
-#   # start dockerizing and deploying
-#   # depoly:
-#   #   image: node6-alpine
-#   #   commands:
-
-  ssh:
+  deploy-containers:
     image: appleboy/drone-ssh
     host: 52.90.0.221
     port: 22
     username: ubuntu
     secrets: [ ssh_key ]
     script:
-      - docker run -it -p 80:3000 mhsallam/reporthubapi
+      - docker run -it -p 81:3000 mhsallam/reporthubapi
+      - docker run -it -p 80:3000 mhsallam/reporthubweb
+
+  depoly-faas:
+    image: mhsallam/bxcli
+    secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
+    commands:
+      - echo  $${BLUEMIX_USER}
+      - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
+      - bx target -g Default
+      - bx wsk action update reports ./services/reports/reports.js
 
 #   gitter:
 #     image: plugins/gitter
