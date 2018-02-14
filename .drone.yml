@@ -74,7 +74,7 @@ pipeline:
 
   ssh:
     image: appleboy/drone-ssh
-    host: http://52.90.0.221
+    host: 52.90.0.221
     port: 22
     username: ubuntu
     secrets: [ ssh_key ]
