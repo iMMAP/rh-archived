@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start:watch": "nodemon index.js",
-    "prestart:prod": "tsc",
+    "build": "tsc",
     "start:prod": "node dist/main.js"
   },
   "dependencies": {

@@ -8,13 +8,15 @@
     "start": "ng serve",
     "start-hmr": "ng serve --hmr -e=hmr -sm=false",
     "start-hmr-sourcemaps": "ng serve --hmr -e=hmr",
-    "build": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --dev",
-    "build-prod": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
+    "build:web": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --dev",
+    "build:web-prod": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "electron .",
-    "electron-aot": "ng build --prod && electron ."
+    "electron-aot": "ng build --prod && electron .",
+    "pack": "build",
+    "build": "ng build --prod && build"
   },
   "private": true,
   "dependencies": {
@@ -60,7 +62,8 @@
     "@types/jasminewd2": "2.0.3",
     "@types/node": "6.0.92",
     "codelyzer": "4.0.2",
-    "electron": "1.7.11",
+    "electron": "1.7.8",
+    "electron-builder": "19.55.3",
     "jasmine-core": "2.6.4",
     "jasmine-spec-reporter": "4.1.1",
     "karma": "1.7.1",
@@ -73,5 +76,16 @@
     "ts-node": "3.2.2",
     "tslint": "5.7.0",
     "typescript": "2.4.2"
+  },
+  "build": {
+    "appId": "com.immap.reporthub",
+    "win": {
+      "target": "nsis",
+      "icon": "build/icons/logo.ico"
+    },
+    "mac": {
+      "target": "pkg",
+      "icon": "build/icons/logo.icns"
+    }
   }
 }
