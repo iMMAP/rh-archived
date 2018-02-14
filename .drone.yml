@@ -38,17 +38,17 @@ pipeline:
     secrets: [ ssh_key ]
     script:
       # - docker rm $(docker stop $(docker ps -a -q --filter="name=reporthub" --format="{{.ID}}"))
-      - docker run -it -p 81:3000 --name reporthub-api mhsallam/reporthubapi
+      - docker run -it -p 81:3000 mhsallam/reporthubapi
       # - docker run -it -p 80:3000 -d --name reporthub-web mhsallam/reporthubweb
 
-  depoly-faas:
-    image: mhsallam/bxcli
-    secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
-    commands:
-      - echo  $${BLUEMIX_USER}
-      - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
-      - bx target -g Default
-      - bx wsk action update reports ./services/reports/reports.js
+  # depoly-faas:
+  #   image: mhsallam/bxcli
+  #   secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
+  #   commands:
+  #     - echo  $${BLUEMIX_USER}
+  #     - bx login -u $${BLUEMIX_USER} -p $${BLUEMIX_PASSWORD} -c $${BLUEMIX_ACCOUNT} -a api.eu-gb.bluemix.net -o $${BLUEMIX_ORG} -s dev
+  #     - bx target -g Default
+  #     - bx wsk action update reports ./services/reports/reports.js
 
   gitter:
     image: plugins/gitter
