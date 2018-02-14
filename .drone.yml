@@ -8,22 +8,22 @@ pipeline:
 #   #     - bx target -g Default
 #   #     - bx wsk action update reports ./services/reports/reports.js
 
-#   build-api:
-#     image: node:6.12
-#     commands:
-#       - npm run install:api
-#       - npm run build:api
-#       - npm run install:web
-#       - npm run build:web
-#       - npm run install:desktop
-#       - npm run build:desktop
-#       - npm run test:api
+  build-api:
+    image: node:6.12
+    commands:
+      - npm run install:api
+      - npm run build:api
+      # - npm run install:web
+      # - npm run build:web
+      # - npm run install:desktop
+      # - npm run build:desktop
+      # - npm run test:api
 
-#   api-image:
-#     image: plugins/docker
-#     dockerfile: api/Dockerfile
-#     repo: mhsallam/reporthubapi
-#     secrets: [ docker_username, docker_password ]
+  api-image:
+    image: plugins/docker
+    dockerfile: api/Dockerfile
+    repo: mhsallam/reporthubapi
+    secrets: [ docker_username, docker_password ]
 
 #   api-image:
 #     image: plugins/docker
@@ -79,9 +79,7 @@ pipeline:
     username: ubuntu
     secrets: [ ssh_key ]
     script:
-      - echo hello
-      - echo world
-      - sudo mkdir ~/deployment
+      - docker run -it -p 80:3000 mhsallam/reporthubapi
 
 #   gitter:
 #     image: plugins/gitter
