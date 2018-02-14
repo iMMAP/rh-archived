@@ -1,4 +1,4 @@
-# pipeline:
+pipeline:
 #   # depoly-faas:
 #   #   image: mhsallam/bxcli
 #   #   secrets: [ bluemix_user, bluemix_password, bluemix_account, bluemix_org ]
