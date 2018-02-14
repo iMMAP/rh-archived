@@ -37,9 +37,9 @@ pipeline:
     username: ubuntu
     secrets: [ ssh_key ]
     script:
-      - docker rm $(docker stop $(docker ps -a -q --filter="name=reporthub" --format="{{.ID}}"))
-      - docker run -it -p 81:3000 -d --name reporthub-api mhsallam/reporthubapi
-      - docker run -it -p 80:3000 -d --name reporthub-web mhsallam/reporthubweb
+      # - docker rm $(docker stop $(docker ps -a -q --filter="name=reporthub" --format="{{.ID}}"))
+      - docker run -it -p 81:3000 --name reporthub-api mhsallam/reporthubapi
+      # - docker run -it -p 80:3000 -d --name reporthub-web mhsallam/reporthubweb
 
   depoly-faas:
     image: mhsallam/bxcli
