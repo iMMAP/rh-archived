@@ -1,34 +1,17 @@
 pipeline:
-  build:
-    image: node:6.12
-    commands:
-      - npm run install:api
-      - npm run build:api
-      # - npm run install:web
-      # - npm run build:web
-      # - npm run install:desktop
-      # - npm run build:desktop
-      # - npm run test:api
-
-  image-api:
+  api:
     image: plugins/docker
+    context: api
     dockerfile: api/Dockerfile
-    repo: mhsallam/reporthubapi
+    repo: mhsallam/rhapi
     secrets: [ docker_username, docker_password ]
 
-  # image-web:
-  #   image: plugins/docker 
-  #   dockerfile: web/Dockerfile
-  #   repo: mhsallam/reporthubweb
-  #   secrets: [ docker_username, docker_password ]
-      
-#   # api-rancher:
-#   #   image: peloton/drone-rancher
-#   #   url: http://35.154.69.25:8080
-#   #   access_key: serverKey
-#   #   secret_key: serverPass
-#   #   service: ReportHub/api
-#   #   docker_image: mhsallam/reporthubapi
+  web:
+    image: plugins/docker 
+    context: web
+    dockerfile: web/Dockerfile
+    repo: mhsallam/rhweb
+    secrets: [ docker_username, docker_password ]
 
   deploy-containers:
     image: appleboy/drone-ssh
@@ -37,9 +20,14 @@ pipeline:
     username: ubuntu
     secrets: [ ssh_key ]
     script:
-      # - docker rm $(docker stop $(docker ps -a -q --filter="name=reporthub" --format="{{.ID}}"))
-      - docker run -it -p 81:3000 mhsallam/reporthubapi
-      # - docker run -it -p 80:3000 -d --name reporthub-web mhsallam/reporthubweb
+      - docker rm $(docker stop $(docker ps -a -q --filter="name=reporthub" --format="{{.ID}}"))
+      - docker rm $(docker ps -q -f status=exited)
+      - docker run -it -p 8001:3000 -d --name reporthub-api mhsallam/rhapi
+      - docker run -it -p 8002:4200 -d --name reporthub-web mhsallam/rhweb
+      # - rm -cf ./rh && git clone https://github.com/iMMAP/rh.git && cd rh
+      # - npm run install:desktop
+      # - npm run build:desktop
+      # - cd desktop/dist/
 
   # depoly-faas:
   #   image: mhsallam/bxcli
