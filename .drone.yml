@@ -1,17 +1,17 @@
 pipeline:
-  # api:
-  #   image: plugins/docker
-  #   context: api
-  #   dockerfile: api/Dockerfile
-  #   repo: mhsallam/rhapi
-  #   secrets: [ docker_username, docker_password ]
+  api:
+    image: plugins/docker
+    context: api
+    dockerfile: api/Dockerfile
+    repo: mhsallam/rhapi
+    secrets: [ docker_username, docker_password ]
 
-  # web:
-  #   image: plugins/docker 
-  #   context: web
-  #   dockerfile: web/Dockerfile
-  #   repo: mhsallam/rhweb
-  #   secrets: [ docker_username, docker_password ]
+  web:
+    image: plugins/docker 
+    context: web
+    dockerfile: web/Dockerfile
+    repo: mhsallam/rhweb
+    secrets: [ docker_username, docker_password ]
 
   deploy-containers:
     image: appleboy/drone-ssh
