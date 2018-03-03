@@ -6,11 +6,11 @@ pipeline:
     repo: mhsallam/rhapi
     secrets: [ docker_username, docker_password ]
 
-  web:
+  web-ng:
     image: plugins/docker 
-    context: web
-    dockerfile: web/Dockerfile
-    repo: mhsallam/rhweb
+    context: web-ng
+    dockerfile: web-ng/Dockerfile
+    repo: mhsallam/rhwebng
     secrets: [ docker_username, docker_password ]
 
   deploy-containers:
@@ -20,9 +20,11 @@ pipeline:
     username: ubuntu
     secrets: [ ssh_key ]
     script:
-      - ./reset-containers.sh
+      - git clone https://github.com/iMMAP/rh
+      - chmod +x rh/scripts/reset-cont.sh && rh/scripts/reset-cont.sh
       - docker run -it -p 8001:3000 -d --name reporthub-api mhsallam/rhapi
-      - docker run -it -p 8002:4200 -d --name reporthub-web mhsallam/rhweb
+      - docker run -it -p 8002:4200 -d --name reporthub-web mhsallam/rhwebng
+      # - docker run -it -p 8002:4200 -d --name reporthub-web mhsallam/rhweb
       # - rm -cf ./rh && git clone https://github.com/iMMAP/rh.git && cd rh
       # - npm run install:desktop
       # - npm run build:desktop
