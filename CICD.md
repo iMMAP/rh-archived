@@ -82,6 +82,8 @@ $ docker-compose -f drone-compose.yml up -d
 ```
 After executing the previous command, docker will poll and run the required images. You will be able to access drone web application through this URL ```http://<your aws ec2 public ip address>:8000```
 
+Note: As in our scenario, the port 8000 needs to be publicly accessible, e.g. if you are using AWS EC2 make sure to add 8000 port to EC2 Instance Security Groups
+
 5. *Installing Drone CLI* (Optional): You might find it faster to manage drone server through cli command instead of the web application interface, and for that reason you can install Drone/CLI using the following curl command:
 
 ```
@@ -123,10 +125,7 @@ Using the secret within .drone.yml file will be something like:
 
 And might differ based on the plugin we are using
 
-### Important Notes
- + As you can see, there are certain ports that need to be publicly accessible, e.g. if you are using AWS EC2 make sure to open these ports in that instance's Security Groups
-
 ### Adding Building Status Badge
-You can add building status badge to your documentation e.g. (http://<your aws ec2 public ip>:8000/api/badges/immap/rh/status.svg)
+You can add building status badge to your documentation e.g. http://<your aws ec2 public ip>:8000/api/badges/immap/rh/status.svg
 
 ![ReportHub Build Status](http://54.165.3.6:8000/api/badges/iMMAP/rh/status.svg)
