@@ -15,7 +15,7 @@ pipeline:
 
   deploy-containers:
     image: appleboy/drone-ssh
-    host: 52.90.0.221
+    host: 54.165.3.6
     port: 22
     username: ubuntu
     secrets: [ ssh_key ]
