@@ -125,8 +125,7 @@ And might differ based on the plugin we are using
 
 ### Important Notes
  + As you can see there are certain ports that need to be publicly accessible, so if you are using Amazon Web Service EC2 make sure to open these ports in that instance's Security Groups
- + If you have instaled Drone on your local machine, you can setup Github client id and secret code 
-
+ 
 ### Adding Building Status Badge
 You can add building status badge to your documentation e.g. (http://<your aws ec2 public ip>:8000/api/badges/immap/rh/status.svg)
 
