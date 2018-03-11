@@ -1,5 +1,5 @@
 # CI/CD Recreation Documentation
-This is documentation will be oriented for ReportHub project
+This Ci/CD documentation will be oriented for ReportHub project
 
 ## Prerequisite
 1. **Docker** is about the only primary requirement you need for setting up this CI/CD server. If you are using Window and Docker is properly installed (along with docker-compose tool) and you want to use it for your CI/CD server then you can move to (Installing Drone) section
@@ -124,9 +124,9 @@ Using the secret within .drone.yml file will be something like:
 And might differ based on the plugin we are using
 
 ### Important Notes
- + As you can see there are certain ports that need to be publicly accessible, so if you are using Amazon Web Service EC2 make sure to open these ports in that instance's Security Groups
- 
+ + As you can see, there are certain ports that need to be publicly accessible, e.g. if you are using AWS EC2 make sure to open these ports in that instance's Security Groups
+
 ### Adding Building Status Badge
 You can add building status badge to your documentation e.g. (http://<your aws ec2 public ip>:8000/api/badges/immap/rh/status.svg)
 
-![ReportHub Build Status](http://54.165.3.6:8000/api/badges/immap/rh/status.svg)
+![ReportHub Build Status](http://54.165.3.6:8000/api/badges/iMMAP/rh/status.svg)
