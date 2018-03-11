@@ -1,5 +1,5 @@
-# ReportHub+
-![Drone Build Status](http://13.126.207.153/api/badges/immap-dev/rh/status.svg)
+# ReportHub
+![ReportHub Build Status](http://54.165.3.6:8000/api/badges/immap-dev/rh/status.svg)
 
 ### The One Information Products Hub You Would Ever Need
 

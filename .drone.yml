@@ -23,7 +23,7 @@ pipeline:
       - git clone https://github.com/iMMAP/rh
       - chmod +x rh/scripts/reset-cont.sh && rh/scripts/reset-cont.sh
       - docker run -it -p 8001:3000 -d --name reporthub-api mhsallam/rhapi
-      - docker run -it -p 8002:4200 -d --name reporthub-web mhsallam/rhwebng
+      - docker run -it -p 8002:4200 -d --name reporthub-webng mhsallam/rhwebng
       # - docker run -it -p 8002:4200 -d --name reporthub-web mhsallam/rhweb
       # - rm -cf ./rh && git clone https://github.com/iMMAP/rh.git && cd rh
       # - npm run install:desktop
