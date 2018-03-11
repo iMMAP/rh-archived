@@ -102,7 +102,7 @@ I'm using certain account credentials for automating access to services like Doc
 
 #### Adding Drone Secrets
 There are two ways for adding drone secrets like ```docker_password```:
-+ Using Drone web application you can navigate to the repository where you need to limit the usage of the secret to certain repository and then from the main menu click Secrets. Type ```docker_password``` in Name field and then enter the actual password in Value field.
++ Using Drone web application you can navigate to the repository where you need to limit the usage of the secret to certain repository and then from the main menu click Secrets. Type ```docker_password``` in Secret Key field and then enter the actual password in Secret Value field.
 + The other way is by using Drone CLI:
 
 ```
