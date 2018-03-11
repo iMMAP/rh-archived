@@ -126,6 +126,6 @@ Using the secret within .drone.yml file will be something like:
 And might differ based on the plugin we are using
 
 ### Adding Building Status Badge
-You can add building status badge to your documentation e.g. http://<your aws ec2 public ip>:8000/api/badges/immap/rh/status.svg
+You can add building status badge to your documentation e.g. http://\<your ec2 public ip>:8000/api/badges/immap/rh/status.svg
 
 ![ReportHub Build Status](http://54.165.3.6:8000/api/badges/iMMAP/rh/status.svg)
